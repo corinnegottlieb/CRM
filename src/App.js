@@ -57,7 +57,7 @@ class App extends Component {
     let owners = { ...this.state.owners }
     data.forEach(d => {
       if (owners[d.owner]) {
-        owners[d.owner] = d.owner + 1
+        owners[d.owner]++
       }
       else {
         owners[d.owner] = 1

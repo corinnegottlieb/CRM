@@ -17,10 +17,16 @@ class Analytics extends Component {
         const response = await Axios.get("http://localhost:5544/clients")
         let owners = this.updateOwners(response.data)
         let newClients = this.newClients(response.data)
+        let emailsSent = this.calculateEmailsSent(response.data)
+        let outstandingClients = this.calculateOutstandingClients(response.data)
+        let hottestCountry = this.calculateHottestCountry(response.data)
         this.setState({
             data: response.data,
             owners,
-            newClients
+            newClients,
+            emailsSent,
+            outstandingClients,
+            hottestCountry
         })
     }
     async componentDidMount() {
@@ -31,7 +37,7 @@ class Analytics extends Component {
         let owners = { ...this.state.owners }
         data.forEach(d => {
             if (owners[d.owner]) {
-                owners[d.owner] = d.owner + 1
+                owners[d.owner]++
             }
             else {
                 owners[d.owner] = 1
@@ -62,10 +68,40 @@ class Analytics extends Component {
         return newClients
     }
 
+    calculateEmailsSent = (data) => {
+        let sentEmails = data.filter(d => d.emailType !== null)
+        let count = sentEmails.length
+        return count
+    }
+
+    calculateOutstandingClients = (data) => {
+        let outstandingClients = data.filter(d => d.sold === false)
+        let count = outstandingClients.length
+        return count
+    }
+
+    calculateHottestCountry = (data) => {
+        let countries = {}
+        data.forEach(d => {
+            if (countries[d.country]) {
+                countries[d.country]++
+            }
+            else {
+                countries[d.country] = 1
+            }
+
+        })
+        let hottest = Object.keys(countries).reduce(function(a,b){ return countries[a] > countries[b] ? a : b })
+        return hottest
+    }
+
+
+
+
 
     render() {
         return <div>
-            <RenderBadges newClients={this.state.newClients} />
+            <RenderBadges hottestCountry={this.state.hottestCountry} newClients={this.state.newClients} emailsSent={this.state.emailsSent} outstandingClients={this.state.outstandingClients} />
             <RenderCharts />
 
         </div>
