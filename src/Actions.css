@@ -1,0 +1,49 @@
+#actionsPage{
+    margin-top: 30px;
+    margin-left: 50px;
+    height: 100vh;
+
+}
+
+.action-button{
+color: #F7CE3E;
+font-weight: bold;
+}
+
+.actions-container{
+    margin-top:20px;
+    margin-left: 20px;
+    max-width: 400px;
+    display:grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 20px;
+}
+
+.action{
+    display:grid;
+    grid-template-columns: 2fr 1fr 1fr; 
+    grid-gap: 10px;
+}
+
+.addClient-container{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    grid-gap: 20px;
+}
+
+#addClient{
+    max-width:300px;
+}
+
+.addClient-button{
+    color: black;
+    background-color: #F7CE3E;
+    width: 200px;
+    padding:10px;
+    margin-top:30px;
+    margin-left:30px;
+    text-align:center;
+    vertical-align: middle;
+    font-weight: bold;
+}

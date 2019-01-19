@@ -20,7 +20,16 @@ padding-top:20px;
     background-color: slategray;
 }
 
-#actionsPage{
-    margin-top: 30px;
-    margin-left: 50px;
+input{
+    background-color: #ecf0f1;  
+    border: none;
+    border-bottom: 1px solid slategray
 }
+
+select{
+    background-color: #ecf0f1;  
+    /* border: none; */
+    border-bottom: 1px solid slategray;
+    font-family: 'Montserrat', serif;
+}
+

@@ -28,23 +28,28 @@ class ClientEdit extends Component {
         })
     }
 
-   
+
 
     updateClient = async () => {
         console.log(this.state.id, this.state)
         this.props.updateClient(this.state.id, this.state)
-        
+        this.props.toggle()
     }
 
     render() {
 
         return (<div className="popup">
             <div className="popupInner">
-                <button onClick={this.props.toggle}>Exit Edit</button>
-                <input name="name" value={this.state.name} onChange={this.handleTextChange}></input>
-                <input name="surname" value={this.state.surname} onChange={this.handleTextChange}></input>
-                <input name="country" value={this.state.country} onChange={this.handleTextChange}></input>
-                <button onClick={this.updateClient}>Update</button>
+                <div className="exit-button-popup" onClick={this.props.toggle}>x</div>
+                <div className="popup-inputs">
+                    <div>Name:</div>
+                    <input name="name" value={this.state.name} onChange={this.handleTextChange}></input>
+                    <div>Surname:</div>
+                    <input name="surname" value={this.state.surname} onChange={this.handleTextChange}></input>
+                    <div>Country:</div>
+                    <input name="country" value={this.state.country} onChange={this.handleTextChange}></input>
+                </div>
+                <div className="update-button-popup" onClick={this.updateClient}>Update</div>
             </div>
         </div>)
     }

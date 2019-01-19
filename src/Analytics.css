@@ -1,0 +1,53 @@
+#badges{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap:10px;
+    padding:10px;
+}
+
+.badge{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas: 
+    "i n"
+    "i d";
+    grid-gap:10px;
+}
+
+.analytics-icon{
+    grid-area: i;
+    font-size: 60px;
+    color:white;
+    border-radius: 100px;
+    height: 100px;
+    width: 100px;
+    text-align: center;
+display:grid;
+align-content: center;
+
+}
+
+.analytics-number{
+    grid-area: n;
+    font-size: 32px;
+    text-align: center;
+    display:grid;
+    align-content: center;
+    
+}
+
+.analytics-description{
+    grid-area: d;
+    font-size:12px;
+    
+}
+
+.newClients-icon{
+    background-color: turquoise;
+
+}
+
+.emailsSent-icon{
+    background-color: lightskyblue
+}
