@@ -21,10 +21,12 @@ class ClientRow extends Component {
                 <div>{name[1]}</div>
                 <div>{data.country}</div>
                 <Moment format="MM/DD/YYYY">{firstContact}</Moment>
-                <div>{data.emailType}</div>
+                {data.emailType === null ?
+                <div>-</div> :
+                <div>{data.emailType}</div>}
                 {data.sold ?
-                    <div>true</div> :
-                    <div>false </div>}
+                    <div><i class="fas fa-check"></i></div> :
+                    <div>-</div>}
                 <div>{data.owner}</div>
             </div>)
     }

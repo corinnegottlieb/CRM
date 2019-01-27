@@ -42,6 +42,7 @@ class Update extends Component {
                 <div className="action">
                     <div>Transfer ownership to</div>
                     <select name="owner" value={this.state.owner} onChange={this.handleTextChange}>
+                    <option selected disabled>Select</option>
                         {Object.keys(owners).map(o => <option key={o}>{o}</option>)}
                     </select>
                     <div className="action-button" onClick={this.updateClient}>TRANSFER</div>
@@ -49,6 +50,7 @@ class Update extends Component {
                 <div className="action">
                     <span>Send email:</span>
                     <select name="emailType" value={this.state.emailType} onChange={this.handleTextChange}>
+                        <option selected disabled>Select</option>
                         <option>A</option>
                         <option>B</option>
                         <option>C</option>

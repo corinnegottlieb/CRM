@@ -4,13 +4,13 @@ import './Analytics.css'
 import './App.css';
 import './Actions.css'
 import Axios from 'axios';
-
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import Clients from './clients components/Clients';
-import Actions from './actions components/Actions';
-import Analytics from './analytics components/Analytics';
-import Home from './app components/Home';
-import NavBar from './app components/NavBar';
+import Clients from './ components/clients/Clients';
+import Actions from './ components/actions/Actions';
+import NavBar from './ components/app/NavBar';
+import Analytics from './ components/analytics/Analytics';
+import Home from './ components/app/Home';
+
 
 class App extends Component {
   constructor() {

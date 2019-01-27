@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import NewClientsBadge from './NewClientsBadge';
-import EmailsSentBadge from './EmailsSentBadge';
-import OutstandingClientsBadge from './OutstandingClientsBadge';
-import HottestCountry from './HottestCountryBadge';
+import NewClientsBadge from './badges/NewClientsBadge';
+import EmailsSentBadge from './badges/EmailsSentBadge';
+import OutstandingClientsBadge from './badges/OutstandingClientsBadge';
+import HottestCountry from './badges/HottestCountryBadge';
 
 class RenderBadges extends Component {
     render() {

@@ -11,11 +11,6 @@ class Actions extends Component{
         }
     }
 
-//     componentDidMount() {
-//         this.setState({
-//  selected
-//             })
-//         }
 
     editClient = (client) => {
         this.setState({
