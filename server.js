@@ -1,6 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const api = require(`./src/server/routes/api`)
+const api = require(`./server/routes/api`)
 const app = express()
 const path = require(`path`)
 
@@ -8,6 +8,7 @@ const path = require(`path`)
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'node_modules')));
 // app.use(function (req, res, next) {
 //     res.header('Access-Control-Allow-Origin', '*')
 //     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
