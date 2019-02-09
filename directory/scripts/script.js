@@ -1,5 +1,5 @@
 const data = require(`../../src/data.json`)
-const Client = require(`../../src/server/models/Client`)
+const Client = require(`../../server/models/Client`)
 
 const mongoose = require('mongoose')
 mongoose.connect(process.env.CONNECTION_STRING||"mongodb://localhost/CRMDB")
