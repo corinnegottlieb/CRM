@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import RenderBadges from './RenderBadges';
 import RenderCharts from './RenderCharts';
 import Axios from 'axios';
-import moment from 'moment';
 
 
 class Analytics extends Component {
@@ -13,10 +12,10 @@ class Analytics extends Component {
         }
     }
 
-    async getData() {
+    async getAnalyticsData() {
         const response = await Axios.get("http://localhost:5544/clients")
-        let topEmployees = this.topEmployees(response.data)
-        let newClients = this.newClients(response.data)
+        let topEmployees = this.calculateTopEmployees(response.data)
+        let newClients = this.calculateNewClients(response.data)
         let emailsSent = this.calculateEmailsSent(response.data)
         let outstandingClients = this.calculateOutstandingClients(response.data)
         let countries = this.sortByCountries(response.data)
@@ -32,18 +31,16 @@ class Analytics extends Component {
         })
     }
     async componentDidMount() {
-        await this.getData()
+        await this.getAnalyticsData()
     }
 
-
-    newClients = (data) => {
+    calculateNewClients = (data) => {
         let newClients = 0
         let current = new Date().getMonth()
         data.forEach(d => {
             let date = new Date(d.firstContact).getMonth()
             if (date === current) {
-                newClients++
-            }
+                newClients++   }
         })
         return newClients
     }
@@ -88,9 +85,7 @@ class Analytics extends Component {
         return groupedCountries
     }
 
-
-
-    topEmployees = (data) => {
+    calculateTopEmployees = (data) => {
         let owners = { ...this.state.owners }
         data.filter(d => d.sold === true).forEach(d => {
             if (owners[d.owner]) {
@@ -100,9 +95,9 @@ class Analytics extends Component {
                 owners[d.owner] = 1
             }
         })
-        let keysSorted = Object.keys(owners).sort(function (a, b) { return owners[a] - owners[b] }).map(key => { return { name: key, sales: owners[key] } }).reverse()
+        let keysSorted = Object.keys(owners).sort(function (a, b) { return owners[a] - owners[b] })
+        .map(key => { return { name: key, sales: owners[key] } }).reverse()
         keysSorted.splice(3)
-        console.log(keysSorted)
         return keysSorted
     }
 

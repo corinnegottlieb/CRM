@@ -2,12 +2,12 @@ import React, { Component } from 'react'
 import Moment from 'react-moment';
 
 class ClientRow extends Component {
-    editClient = () => {
-        this.props.editClient(this.props.data)
+    selectClient = () => {
+        this.props.selectClient(this.props.data)
     }
 
     popup = () => {
-        this.editClient()
+        this.selectClient()
         this.props.toggle()
     }
 
@@ -21,11 +21,11 @@ class ClientRow extends Component {
                 <div>{name[1]}</div>
                 <div>{data.country}</div>
                 <Moment format="MM/DD/YYYY">{firstContact}</Moment>
-                {data.emailType === null ?
-                <div>-</div> :
-                <div>{data.emailType}</div>}
+                {!data.emailType ?
+                    <div>-</div> :
+                    <div>{data.emailType}</div>}
                 {data.sold ?
-                    <div><i class="fas fa-check"></i></div> :
+                    <div><i className="fas fa-check"></i></div> :
                     <div>-</div>}
                 <div>{data.owner}</div>
             </div>)

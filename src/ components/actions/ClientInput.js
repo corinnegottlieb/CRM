@@ -8,16 +8,16 @@ class ClientInput extends Component {
         }
     }
 
-    handleTextChange = (event) => {
-        this.setState({
+    handleInputChange = async (event) => {
+      await  this.setState({
             [event.target.name]: event.target.value
-        }, ()=>{
-        this.editClient()})
+        })
+            this.selectClient()
     }
 
-    editClient=()=>{
-       let client = this.props.data.find(d=>d.name===this.state.name)
-        this.props.editClient(client)
+    selectClient = () => {
+        let client = this.props.data.find(d => d.name === this.state.name)
+        this.props.selectClient(client)
     }
 
     render() {
@@ -25,9 +25,12 @@ class ClientInput extends Component {
             <div id="update">
                 <h2>UPDATE</h2>
                 <span>Client:    </span>
-                <input placeholder="Client Name" list="names" name="name" value={this.state.name} onChange={this.handleTextChange}></input>
+                <input placeholder="Client Name" list="names"
+                    name="name" value={this.state.name}
+                    onChange={this.handleInputChange}></input>
                 <datalist id="names">
-                {this.props.data.map(d=><option key={d.name} value={d.name}></option>)}
+                    {this.props.data.map(d => 
+                    <option key={d.name} value={d.name}></option>)}
                 </datalist>
             </div >)
     }

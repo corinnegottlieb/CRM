@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class ClientEdit extends Component {
+class ClientEditPopUp extends Component {
     constructor() {
         super()
         this.state = {
@@ -29,10 +29,13 @@ class ClientEdit extends Component {
     }
 
 
-
     updateClient = async () => {
-        console.log(this.state.id, this.state)
-        this.props.updateClient(this.state.id, this.state)
+        let fullName = this.state.name.concat(` ${this.state.surname}`)
+        let client = {
+            name: fullName,
+            country: this.state.country
+        }
+        this.props.updateClient(this.state.id, client)
         this.props.toggle()
     }
 
@@ -43,11 +46,11 @@ class ClientEdit extends Component {
                 <div className="exit-button-popup" onClick={this.props.toggle}>x</div>
                 <div className="popup-inputs">
                     <div>Name:</div>
-                    <input name="name" value={this.state.name} onChange={this.handleTextChange}></input>
+                    <input type= "text" name="name" value={this.state.name} onChange={this.handleTextChange}></input>
                     <div>Surname:</div>
-                    <input name="surname" value={this.state.surname} onChange={this.handleTextChange}></input>
+                    <input type="text" name="surname" value={this.state.surname} onChange={this.handleTextChange}></input>
                     <div>Country:</div>
-                    <input name="country" value={this.state.country} onChange={this.handleTextChange}></input>
+                    <input type="text" name="country" value={this.state.country} onChange={this.handleTextChange}></input>
                 </div>
                 <div className="update-button-popup" onClick={this.updateClient}>Update</div>
             </div>
@@ -55,4 +58,4 @@ class ClientEdit extends Component {
     }
 }
 
-export default ClientEdit
+export default ClientEditPopUp

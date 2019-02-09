@@ -10,32 +10,39 @@ class AddClient extends Component {
         }
     }
 
-    handleTextChange = (event) => {
+    handleInputChange = (event) => {
         this.setState({
             [event.target.name]: event.target.value
         })
     }
-    addClient = async () => {
-        this.props.addClient(this.state)
+    addNewClient = async () => {
+        let fullName = this.state.name + ` ` + this.state.surname
+        let newClient = {
+            name: fullName,
+            country: this.state.country
+        }
+        this.props.addNewClient(newClient)
     }
+
     render() {
         return (
             <div id="addClient">
                 <h2>ADD CLIENT</h2>
                 <div className="addClient-container">
                     <div>First name:</div>
-                    <input type="text" name="name" value={this.state.name} onChange={this.handleTextChange}></input>
+                    <input type="text" name="name" value={this.state.name}
+                        onChange={this.handleInputChange}></input>
                     <div>Surname:</div>
-                    <input type="text" name="surname" value={this.state.surname} onChange={this.handleTextChange}></input>
+                    <input type="text" name="surname" value={this.state.surname}
+                        onChange={this.handleInputChange}></input>
                     <div>Country:</div>
-                    <input type="text" name="country" value={this.state.country} onChange={this.handleTextChange}></input>
+                    <input type="text" name="country" value={this.state.country}
+                        onChange={this.handleInputChange}></input>
                     <div>Owner:</div>
                     <input></input>
                 </div>
-
-                <div className="addClient-button" onClick={this.addClient}>ADD NEW CLIENT</div>
-
-
+                <div className="addClient-button" onClick={this.addNewClient}>
+                    ADD NEW CLIENT</div>
             </div >)
     }
 }

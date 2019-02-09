@@ -1,7 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const app = express()
 const api = require(`./src/server/routes/api`)
+const app = express()
 
 
 app.use(bodyParser.json())
@@ -20,7 +20,7 @@ mongoose.connect("mongodb://localhost/CRMDB")
 
 app.use('/', api)
 
-port = 5544
-app.listen(port, function(){
-    console.log(`Running on port ${port}`)
+PORT = 5544
+app.listen(PORT, function(){
+    console.log(`Running on port ${PORT}`)
 })

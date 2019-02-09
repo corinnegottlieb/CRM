@@ -1,29 +1,59 @@
-import React, { Component} from 'react'
+import React, { Component } from 'react'
 import Update from './Update';
 import AddClient from './AddClient';
 import ClientInput from './ClientInput';
+import Axios from 'axios';
 
-class Actions extends Component{
+
+class Actions extends Component {
     constructor() {
         super()
         this.state = {
+            data: [],
+            owners: [],
             selected: '',
         }
     }
-
-
-    editClient = (client) => {
+    async getData() {
+        const response = await Axios.get("http://localhost:5544/clients")
+        let owners = this.updateOwners(response.data)
         this.setState({
-          selected: client
+            data: response.data,
+            owners
         })
-      }
-    
-    render(){
+    }
+
+    async componentDidMount() {
+        await this.getData()
+    }
+
+    updateOwners = (data) => {
+        let owners = { ...this.state.owners }
+        owners = new Set(data.map(d=>d.owner))
+        return [...owners]
+    }
+
+    selectClient = (client) => {
+        this.setState({
+            selected: client
+        })
+    }
+    updateClient = async (id, data) => {
+        await Axios.put(`http://localhost:5544/client/${id}`, data)
+    }
+
+    addNewClient = async (client) => {
+        await Axios.post(`http://localhost:5544/client`, client)
+    }
+
+
+
+    render() {
         return (<div id="actionsPage">
-<ClientInput data={this.props.data} editClient={this.editClient} />
-<Update owners={this.props.owners} selected={this.state.selected} updateClient={this.props.updateClient}/>
-<AddClient addClient={this.props.addClient}/>
-            </div>)
+            <ClientInput data={this.state.data} selectClient={this.selectClient} />
+            <Update owners={this.state.owners} selected={this.state.selected} updateClient={this.updateClient} />
+            <AddClient addNewClient={this.addNewClient} />
+        </div>)
     }
 }
 
