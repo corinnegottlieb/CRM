@@ -15,7 +15,7 @@ class Actions extends Component {
         }
     }
     async getData() {
-        const response = await Axios.get("http://localhost:5544/clients")
+        const response = await Axios.get('/clients')
         let owners = this.updateOwners(response.data)
         this.setState({
             data: response.data,
@@ -39,11 +39,11 @@ class Actions extends Component {
         })
     }
     updateClient = async (id, data) => {
-        await Axios.put(`http://localhost:5544/client/${id}`, data)
+        await Axios.put(`/client/${id}`, data)
     }
 
     addNewClient = async (client) => {
-        await Axios.post(`http://localhost:5544/client`, client)
+        await Axios.post(`/client`, client)
     }
 
 

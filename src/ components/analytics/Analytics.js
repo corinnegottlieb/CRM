@@ -13,7 +13,7 @@ class Analytics extends Component {
     }
 
     async getAnalyticsData() {
-        const response = await Axios.get("http://localhost:5544/clients")
+        const response = await Axios.get("/clients")
         let topEmployees = this.calculateTopEmployees(response.data)
         let newClients = this.calculateNewClients(response.data)
         let emailsSent = this.calculateEmailsSent(response.data)

@@ -28,7 +28,7 @@ class Clients extends Component {
         })
     }
     async getClientData() {
-        const response = await Axios.get("http://localhost:5544/clients")
+        const response = await Axios.get("/clients")
         this.setState({
             data: response.data,
         })
@@ -44,7 +44,7 @@ class Clients extends Component {
         })
     }
     updateClient = async (id, data) => {
-        await Axios.put(`http://localhost:5544/client/${id}`, data)
+        await Axios.put(`/client/${id}`, data)
         // update locally instead of retreving entire database find index 
         this.getClientData()
     }
