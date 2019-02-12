@@ -18,7 +18,7 @@ app.use(express.static(path.join(__dirname, 'node_modules')));
 // })
 
 const mongoose = require('mongoose')
-mongoose.connect(process.env.MONGODB_URI||"mongodb://localhost/CRMDB")
+mongoose.connect(process.env.MONGODB_URI||"mongodb://localhost:27017/CRMDB")
 
 
 app.use('/', api)
