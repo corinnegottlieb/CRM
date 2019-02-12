@@ -18,7 +18,15 @@ app.use(express.static(path.join(__dirname, 'node_modules')));
 // })
 
 const mongoose = require('mongoose')
-mongoose.connect(process.env.MONGODB_URI||"mongodb://localhost:27017/CRMDB")
+mongoose.connect(process.env.MONGODB_URI||"mongodb://localhost:27017/CRMDB", function(err) {
+    if (!err){
+        console.log('successfully conneced to mongo');
+    }
+
+    else{
+        console.log('err: ' + err);
+    }
+})
 
 
 app.use('/', api)
