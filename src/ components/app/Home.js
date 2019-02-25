@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom'
 
 class Home extends Component {
     render() {
-        return (
+        return (<div id="home">
             <Link to="/clients"
-                id="home">
+                >
                 Welcome to the CRM
             </Link>
+            </div>
         )
     }
 }
