@@ -42,4 +42,6 @@ select{
     background-color: #F7CE3E;
     width: 200px;
     padding: 10px;
+    text-decoration: none;
+    color:black;
 }
