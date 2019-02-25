@@ -1,7 +1,7 @@
 .App{
     font-family: 'Montserrat', serif;
     background-color: #ecf0f1;
- 
+    height: 100vh;
 }
 .nav-bar{
 background-color: #0a1612;
@@ -34,7 +34,7 @@ select{
 }
 
 #home{
-  height: 100vh;
   font-weight: bold;
   text-align: center;
+  margin: 40px;
 }
