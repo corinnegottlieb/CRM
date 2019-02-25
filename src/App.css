@@ -34,7 +34,12 @@ select{
 }
 
 #home{
-  font-weight: bold;
-  text-align: center;
-  margin: 40px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #F7CE3E;
+    width: 200px;
+    padding: 10px;
 }
